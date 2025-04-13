@@ -1,7 +1,7 @@
 def get_word_count(text):
     words = text.split()
     num_words = len(words)
-    print(f"{num_words} words found in the document")
+    return num_words
 
 def get_char_count(text):
     char_count = {} #create empty dictionary
@@ -11,5 +11,16 @@ def get_char_count(text):
             char_count[char] += 1 #increment
         else:
             char_count[char] = 1 #create a new key if there is a new char
-    return print(char_count)
+    return char_count
+
+def get_report(dict):
+    char_list = []
+    for char, count in dict.items():
+        char_list.append({"char": char, "count": count})
+    
+    def sort_on(dict_item):
+        return dict_item["count"]
+    
+    char_list.sort(reverse=True, key=sort_on)
+    return char_list
 
